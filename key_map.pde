@@ -89,7 +89,10 @@ import ddf.minim.*;  //minim
  // Effect 
  Effect eff; 
  
+ Minim minim1,minim2,minim3, minim4, minim5, minim6;
  
+  AudioPlayer player1, player2, player3, player4, player5, player6;
+  
  
  
  
@@ -99,6 +102,23 @@ import ddf.minim.*;  //minim
  /* ---------------------------------- */ 
  void setup(){
     size(displayWidth, displayHeight); 
+    minim1 = new Minim(this);  //初期化
+    player1 = minim1.loadFile("coin.mp3");  //groove.mp3をロードする
+    
+    minim2 = new Minim(this);
+    player2 = minim2.loadFile("sound1.mp3");
+    
+    minim3 = new Minim(this);
+    player3 = minim3.loadFile("sound2.mp3");
+    
+    minim4 = new Minim(this);
+    player4 = minim4.loadFile("sound3.mp3");
+    
+    minim5 = new Minim(this);
+    player5 = minim5.loadFile("sound4.mp3");
+    
+    minim6 = new Minim(this);
+    player6 = minim6.loadFile("sound5.mp3");
     
    for (int i=0; i<KEYS_LEFT.length; i++) { 
      keys_center_x[i] = KEYS_LEFT[i] + KEYS_W[i]/2; 
@@ -124,15 +144,35 @@ import ddf.minim.*;  //minim
  
  
  
- void keyPressed() { 
+ void keyPressed() {
+   
    if (keyCode == ENTER) { 
-     c_cnt = (c_cnt + 1) % 5; 
-   } 
+     c_cnt = (c_cnt + 1) % 5;
+     player6.play();
+     player6.rewind();
+   } else if (c_cnt == 0) {
+     player4.play();
+     player4.rewind();
+   } else if (c_cnt == 1){
+     player2.play();
+     player2.rewind();
+   } else if (c_cnt == 2) {
+     player3.play();
+     player3.rewind();
+   } else if (c_cnt == 3) {
+     player1.play();
+     player1.rewind();
+   } else if (c_cnt == 4) {
+     player5.play();
+     player5.rewind();
+   }
+   
    int i = keyCode2keyidx(keyCode); 
    if (i != -1) { 
      keyPressed_status[i] = true; 
      eff.pressed(i, keys_center_x[i], keys_center_y[i]); 
    } 
+   
  }  
  
  

@@ -44,8 +44,7 @@ class Effect_Chara implements Effect {
   // set chara idx
   int cnt = 0;
   
-  Minim minim = new Minim(this);  //初期化
-  AudioPlayer player = minim.loadFile("coin.mp3");  //groove.mp3をロードする
+  
   
   
   /* --------------------------------- */
@@ -68,8 +67,7 @@ class Effect_Chara implements Effect {
       // x = 0 -> not move
       if (charas_x[i] > 0) {
         charas_y[i] -= SP; // move
-        player.play();
-        player.rewind();
+        
         text(charas[i], charas_x[i], charas_y[i]); // display
         
         if (charas_y[i] < YCCP) charas_x[i] = 0; // set not move 
