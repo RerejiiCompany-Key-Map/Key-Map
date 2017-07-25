@@ -10,6 +10,14 @@ class Effect_Chara implements Effect {
     '*', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '*' ,                       '↑',            '1', '2', '3', '*',
     '*', '*', '*', '*', '*', '*', '*',                                            '←', '↓', '→',       '0', '.',
   };
+  
+  // keyColor_change
+   int[][] color_ = {{255, 0, 255}, {255, 0, 255}, {255, 0, 255}, {15, 255, 255}, {255, 0, 255}}; 
+   
+  // Sound 
+  //Minim minim;
+  //AudioPlayer player;
+  
   // speed
   final int SP = 3;
   // text size
@@ -20,11 +28,13 @@ class Effect_Chara implements Effect {
   final int YCCP = -5000;
   
   
+  
   /* ------------------------------- */
   /* ---------- VARIABLES ---------- */
   /* ------------------------------- */
   // color
   color c;
+  color c_key;
   // charas x point
   int[] charas_x = new int[N];
   // charas y point
@@ -34,11 +44,14 @@ class Effect_Chara implements Effect {
   // set chara idx
   int cnt = 0;
   
+  Minim minim = new Minim(this);  //初期化
+  AudioPlayer player = minim.loadFile("coin.mp3");  //groove.mp3をロードする
+  
   
   /* --------------------------------- */
   /* ---------- CONSTRUCTOR ---------- */
   /* --------------------------------- */
-  Effect_Chara(color c_) {
+  Effect_Chara(color c_) {   
     c = c_;
   }
   
@@ -55,6 +68,8 @@ class Effect_Chara implements Effect {
       // x = 0 -> not move
       if (charas_x[i] > 0) {
         charas_y[i] -= SP; // move
+        player.play();
+        player.rewind();
         text(charas[i], charas_x[i], charas_y[i]); // display
         
         if (charas_y[i] < YCCP) charas_x[i] = 0; // set not move 
@@ -75,5 +90,14 @@ class Effect_Chara implements Effect {
   // change color
   void setColor(color c_) {
     c = c_;
+  }
+  
+  // keyColor_change
+  void keycolor_change(int c_cnt) {
+    c_key = color(color_[c_cnt][0], color_[c_cnt][1], color_[c_cnt][2]);
+    setColor(c_key);
+    // red 255, 0, 255
+    // yellow 15, 255, 255
+    // white, blue, green  charas_y[x]*255 / displayHeight, 255, 255
   }
 }
