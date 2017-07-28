@@ -12,7 +12,7 @@ class Effect_Chara implements Effect {
   };
   
   // keyColor_change
-   int[][] color_ = {{255, 0, 255}, {255, 0, 255}, {255, 0, 255}, {15, 255, 255}, {255, 0, 255}}; 
+   int[][] color_ = {{230, 120, 255}, {255, 135, 255}, {42, 255, 255}, {42, 255, 255}, {255, 0, 255}}; 
    
   // Sound 
   //Minim minim;
@@ -44,6 +44,14 @@ class Effect_Chara implements Effect {
   // set chara idx
   int cnt = 0;
   
+  // distance
+  int[] dis = new int[N];
+  // ripple x point
+  int[] ripple_x = new int[N];
+  // ripple y point
+  int[] ripple_y = new int[N];
+  //ripple count
+  int r_cnt = 0;
   
   
   
@@ -67,9 +75,7 @@ class Effect_Chara implements Effect {
       // x = 0 -> not move
       if (charas_x[i] > 0) {
         charas_y[i] -= SP; // move
-        
-        text(charas[i], charas_x[i], charas_y[i]); // display
-        
+        text(charas[i], charas_x[i], charas_y[i]); // display  
         if (charas_y[i] < YCCP) charas_x[i] = 0; // set not move 
       }
     }
@@ -84,7 +90,36 @@ class Effect_Chara implements Effect {
     cnt = (cnt+1)%N;
   }
   
-  
+  void ripple_generate() {
+   if(cnt -1  < 0) {
+     ripple_x[r_cnt] = charas_x[N-1];
+     ripple_y[r_cnt] = charas_y[N-1];
+     dis[r_cnt] = 1;
+   } else {
+     ripple_x[r_cnt] = charas_x[cnt-1];
+     ripple_y[r_cnt] = charas_y[cnt-1];
+     dis[r_cnt] =1;
+   }
+   r_cnt = (r_cnt+1) % N;
+ }
+ 
+  void ripple_move() {
+    noFill();
+    strokeWeight(2);
+    stroke(255);
+    for (int i = 0; i < N; i++) {
+      if(dis[i] ==0) {
+        continue;
+      } else {
+        if(dis[i] < 320){
+          dis[i] += 3;
+          ellipse(ripple_x[i], ripple_y[i], dis[i],dis[i]);
+        }
+      }
+    }
+  }
+    
+ 
   // change color
   void setColor(color c_) {
     c = c_;
@@ -94,8 +129,22 @@ class Effect_Chara implements Effect {
   void keycolor_change(int c_cnt) {
     c_key = color(color_[c_cnt][0], color_[c_cnt][1], color_[c_cnt][2]);
     setColor(c_key);
-    // red 255, 0, 255
-    // yellow 15, 255, 255
-    // white, blue, green  charas_y[x]*255 / displayHeight, 255, 255
+  }
+  
+  void coin() {
+    fill(c);
+    stroke(30, 255, 255);
+    strokeWeight(3);
+    for(int i = 0; i < N; i++) {
+      if(charas_x[i] > 0) {
+        charas_y[i] -= SP;
+        if(charas_y[i] > -200) {
+        ellipse(charas_x[i], charas_y[i],10 ,15); 
+        }
+      }
+      if (charas_y[i] < YCCP) charas_x[i] = 0; // set not move 
+    }
   }
 }
+
+

@@ -14,21 +14,21 @@ import ddf.minim.*;  //minim
  // key params 
  // start point (x) 
  final int[] KEYS_LEFT = { 
-    10,  58, 105, 152, 199, 245, 292, 339, 386, 433, 479, 526, 573, 618,       684, 729, 774,       837, 882, 927, 972,     //   0,  14,  17 
-    10,  57, 102, 147, 192, 237, 283, 328, 373, 418, 463, 508, 553, 596,       684, 729, 774,       837, 882, 927, 972,     //  21,  35,  38 
-    10,  79, 124, 170, 215, 260, 305, 350, 395, 441, 485, 530, 575, 620,       684, 729, 774,       837, 882, 927, 972,     //  42,  56,  59 
-    10,  90, 136, 181, 226, 272, 317, 362, 407, 452, 497, 542, 586,                                 837, 882, 927, 972,     //  63,       76 
-    10, 113, 159, 204, 249, 294, 339, 384, 429, 475, 519, 564,                      729,            837, 882, 927, 972,     //  80,  92,  93 
-    10,  85, 139, 206, 476, 544, 599,                                          685, 729, 775,       838, 927,               //  97, 104, 107 
+    10,  58, 105, 152, 199, 245, 292, 339, 386, 433, 479, 526, 573, 618,       684, 729, 774,       838, 883, 928, 975,     //   0,  14,  17 
+    11,  57, 102, 147, 192, 237, 283, 328, 373, 418, 463, 508, 553, 596,       684, 729, 774,       838, 883, 928, 974,     //  21,  35,  38 
+    12,  79, 124, 170, 215, 260, 305, 350, 395, 441, 485, 530, 575, 620,       684, 729, 774,       837, 882, 927, 972,     //  42,  56,  59 
+    13,  91, 136, 181, 226, 272, 317, 362, 407, 452, 497, 542, 586,                                 837, 882, 927, 972,     //  63,       76 
+    16, 116, 160, 205, 249, 294, 339, 384, 429, 475, 519, 564,                      729,            837, 882, 927, 972,     //  80,  92,  93 
+    18,  85, 139, 206, 476, 544, 599,                                          685, 729, 775,       838, 927,               //  97, 104, 107 
  }; 
  // start point (y) 
  final int[] KEYS_TOP = { 
     9,    9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,   9,         9,   9,   9,         9,   9,   9,   9,     //   0,  14,  17 
    38,   38,  38,  38,  38,  38,  38,  38,  38,  38,  38,  38,  38,  38,        38,  38,  38,        38,  38,  38,  38,     //  21,  35,  38 
-   79,   79,  79,  79,  79,  79,  79,  79,  79,  79,  79,  79,  79,  79,        79,  79,  79,        79,  79,  79,  79,     //  42,  56,  59 
-   120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120,                                 120, 120, 120, 120,     //  63,       76 
-   161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161,                      167,            161, 161, 161, 161,     //  80,  92,  93 
-   208, 208, 208, 208, 208, 208, 208,                                          208, 208, 208,       208, 208,               //  97, 104, 107 
+   80,   80,  80,  80,  80,  80,  80,  80,  80,  80,  80,  80,  80,  80,        80,  80,  80,        80,  80,  80,  80,     //  42,  56,  59 
+   121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121,                                 121, 121, 121, 121,     //  63,       76 
+   162, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161, 161,                      167,            161, 161, 161, 161,     //  80,  92,  93 
+   203, 205, 207, 207, 208, 208, 208,                                          208, 208, 208,       207, 207,               //  97, 104, 107 
  }; 
  // width 
  final int[] KEYS_W = { 
@@ -37,7 +37,7 @@ import ddf.minim.*;  //minim
     62,  38,  39,  38,  38,  38,  38,  38,  38,  38,  38,  38,  38,  38,        38,  38,  38,        38,  38,  38,  38,     //  42,  56,  59 
     73,  38,  38,  38,  38,  38,  38,  38,  38,  38,  38,  38,  72,                                  38,  38,  38,  38,     //  80,  92,  93 
     96,  38,  38,  38,  38,  38,  38,  38,  38,  38,  38,  94,                       38,             38,  38,  38,  38,     //  63,       76 
-    66,  49,  61, 263,  61,  49,  59,                                           38,  38,  38,        82,  38,               //  97, 104, 107 
+    62,  49,  61, 263,  60,  48,  58,                                           38,  38,  38,        80,  36,               //  97, 104, 107 
  }; 
  // height 
  final int[] KEYS_H = { 
@@ -45,8 +45,8 @@ import ddf.minim.*;  //minim
     36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,        36,  36,  36,        36,  36,  36,  36,     //  21,  35,  38 
     36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,        36,  36,  36,        36,  36,  36,  36,     //  42,  56,  59 
     36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,                                  36,  36,  36,  36,     //  63,       76 
-    36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,                       36,             36,  36,  36,  84,     //  80,  92,  93 
-    36,  36,  36,  36,  36,  36,  36,                                           36,  36,  36,        36,  36,               //  97, 104, 107 
+    33 ,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,  36,                       36,             36,  36,  36,  80,     //  80,  92,  93 
+    36,  35,  35,  35,  35,  35,  35,                                           35,  35,  35,        35,  35,               //  97, 104, 107 
  }; 
  // keyCode -> key_array_idx 
  final int[] KEYS_IDX = { 
@@ -71,8 +71,9 @@ import ddf.minim.*;  //minim
  //int[][] color = new int[5][3]; 
  
  
- int[][] color_ = {{255, 0, 255}, {255, 255, 255}, {85, 255, 255}, {42, 255, 200}, {145, 220, 255}}; 
+ int[][] color_ = {{255, 0, 255}, {255, 255, 255}, {75, 255, 180}, {20, 255, 125}, {145, 220, 255}}; 
  int c_cnt = 0; 
+
  
  
   /* ------------------------------- */ 
@@ -91,7 +92,7 @@ import ddf.minim.*;  //minim
  
  Minim minim1,minim2,minim3, minim4, minim5, minim6;
  
-  AudioPlayer player1, player2, player3, player4, player5, player6;
+  AudioPlayer play_ora, play_re, play_gr, play_whi, play_bl, play_en;
   
  
  
@@ -103,22 +104,22 @@ import ddf.minim.*;  //minim
  void setup(){
     size(displayWidth, displayHeight); 
     minim1 = new Minim(this);  //初期化
-    player1 = minim1.loadFile("coin.mp3");  //groove.mp3をロードする
+    play_ora = minim1.loadFile("coin.mp3");  //groove.mp3をロードする
     
     minim2 = new Minim(this);
-    player2 = minim2.loadFile("sound1.mp3");
+    play_re = minim2.loadFile("sound1.mp3");
     
     minim3 = new Minim(this);
-    player3 = minim3.loadFile("sound2.mp3");
+    play_gr = minim3.loadFile("sound2.mp3");
     
     minim4 = new Minim(this);
-    player4 = minim4.loadFile("sound3.mp3");
+    play_whi = minim4.loadFile("sound5.mp3");
     
     minim5 = new Minim(this);
-    player5 = minim5.loadFile("sound4.mp3");
+    play_bl = minim5.loadFile("water-drop3.mp3");
     
     minim6 = new Minim(this);
-    player6 = minim6.loadFile("sound5.mp3");
+    play_en = minim6.loadFile("sound3.mp3");
     
    for (int i=0; i<KEYS_LEFT.length; i++) { 
      keys_center_x[i] = KEYS_LEFT[i] + KEYS_W[i]/2; 
@@ -130,52 +131,62 @@ import ddf.minim.*;  //minim
  } 
  
  
- 
- 
  void draw() { 
    c = color_change();
    calib(); 
    disp_keys(); 
-   disp_keyPressed(); 
-   eff.disp();
+   disp_keyPressed();
    eff.keycolor_change(c_cnt%5);
+   if(c_cnt % 5 != 3) {
+     eff.disp();
+   } else {
+     eff.coin();
+   }
+   
+   eff.ripple_move();
  } 
  
- 
+ void init() {
+  frame.removeNotify();
+  frame.setUndecorated(true);
+  frame.addNotify();
+  super.init();  
+}
  
  
  void keyPressed() {
    
    if (keyCode == ENTER) { 
      c_cnt = (c_cnt + 1) % 5;
-     player6.play();
-     player6.rewind();
+     play_en.play();
+     play_en.rewind();
    } else if (c_cnt == 0) {
-     player4.play();
-     player4.rewind();
+     play_whi.play();
+     play_whi.rewind();
    } else if (c_cnt == 1){
-     player2.play();
-     player2.rewind();
+     play_re.play();
+     play_re.rewind();
    } else if (c_cnt == 2) {
-     player3.play();
-     player3.rewind();
+     play_gr.play();
+     play_gr.rewind();
    } else if (c_cnt == 3) {
-     player1.play();
-     player1.rewind();
+     play_ora.play();
+     play_ora.rewind();
    } else if (c_cnt == 4) {
-     player5.play();
-     player5.rewind();
+     play_bl.play();
+     play_bl.rewind();
    }
    
    int i = keyCode2keyidx(keyCode); 
    if (i != -1) { 
      keyPressed_status[i] = true; 
-     eff.pressed(i, keys_center_x[i], keys_center_y[i]); 
+     eff.pressed(i, keys_center_x[i], keys_center_y[i]);
+     if(c_cnt == 4) {
+       eff.ripple_generate();
+     }
    } 
    
  }  
- 
- 
  
  
  void keyReleased() { 
@@ -183,7 +194,7 @@ import ddf.minim.*;  //minim
    if (i != -1) keyPressed_status[i] = false; 
  } 
  
- 
+
  
  
  
