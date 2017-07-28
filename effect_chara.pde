@@ -53,6 +53,13 @@ class Effect_Chara implements Effect {
   //ripple count
   int r_cnt = 0;
   
+  // Light x
+  int[] light_x = new int [N];
+  int[] li_af = new int[N];
+  //Light y
+  int[] light_y = new int[N];
+  // light count
+  int l_cnt = 0;
   
   
   /* --------------------------------- */
@@ -145,6 +152,35 @@ class Effect_Chara implements Effect {
       if (charas_y[i] < YCCP) charas_x[i] = 0; // set not move 
     }
   }
+  
+  void light_gene() {
+    if(cnt  - 1 < 0) {
+      light_x[l_cnt] = charas_x[N - 1];
+      light_y[l_cnt] = charas_y[N - 1];
+    } else {
+      light_x[l_cnt] = charas_x[cnt-1];
+      light_y[l_cnt] = charas_y[cnt-1];
+    }
+    li_af[l_cnt] = 30;
+
+  }
+    
+  
+  void light_move() {
+    strokeWeight(1);
+    stroke(255);
+    for(int i = 0; i < N; i++) {
+      if(li_af[i] == 0) {
+        continue;
+      } else {
+        if (li_af[i] < 80) {
+          li_af[i] += 2;
+          line(light_x[i] + li_af[i],light_y[i], light_x[i] + 20 +li_af[i], light_y[i]);
+          line(light_x[i] - li_af[i] ,light_y[i], light_x[i] - 20 - li_af[i], light_y[i]);
+          line(light_x[i],light_y[i] + li_af[i], light_x[i], light_y[i] + 15 + li_af[i]);
+          line(light_x[i],light_y[i] - li_af[i], light_x[i], light_y[i] - 15 - li_af[i]);
+        }
+      }
+    }
+  }
 }
-
-

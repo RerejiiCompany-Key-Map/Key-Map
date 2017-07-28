@@ -6,4 +6,6 @@ interface Effect {
   void ripple_generate();
   void ripple_move();
   void coin();
+  void light_gene();
+  void light_move();
 }

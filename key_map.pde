@@ -142,17 +142,17 @@ import ddf.minim.*;  //minim
    } else {
      eff.coin();
    }
-   
    eff.ripple_move();
+   eff.light_move();
  } 
- 
+ /*
  void init() {
   frame.removeNotify();
   frame.setUndecorated(true);
   frame.addNotify();
   super.init();  
 }
- 
+ */
  
  void keyPressed() {
    
@@ -183,6 +183,8 @@ import ddf.minim.*;  //minim
      eff.pressed(i, keys_center_x[i], keys_center_y[i]);
      if(c_cnt == 4) {
        eff.ripple_generate();
+     }else if(c_cnt == 1){
+       eff.light_gene();
      }
    } 
    
